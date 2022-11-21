@@ -11,7 +11,8 @@ typedef struct{
 
 void* read_chars(void* arguments){
     args data = *(args*)(arguments);
-    int counter;
+    int *res = malloc(sizeof(int));
+    int counter = 0;
     char c;
 
     while((c = fgetc(data.f)) != EOF){
@@ -19,14 +20,15 @@ void* read_chars(void* arguments){
             counter++;
     }
 
-    pthread_exit((void*)(&counter));
+    *res = counter;
+    pthread_exit((void*)(res));
 }
 
 
 int main(){
     pthread_t thread_id;
     args parameters;
-    void **returned_data;
+    void *returned_data;
 
     printf("Insert the names of the files you want to open (type 'exit' to stop): \n");
 
@@ -46,11 +48,12 @@ int main(){
         }
         else{
             pthread_create(&thread_id, NULL, &read_chars, (void*)(&parameters));
-            pthread_join(thread_id, returned_data);
+            pthread_join(thread_id, &returned_data);
             fclose(parameters.f);
         }
 
-        printf("There are %d characters inside the file named: '%s'\n", **(int**)(returned_data), parameters.filename);
+        printf("There are %d characters inside the file named: '%s'\n", *(int*)(returned_data), parameters.filename);
+        free(returned_data);
     }
     return 1;   
 }
