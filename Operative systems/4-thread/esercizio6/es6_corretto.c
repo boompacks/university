@@ -53,7 +53,7 @@ int main(){
         }
 
         printf("There are %d characters inside the file named: '%s'\n", *(int*)(returned_data), parameters.filename);
-        free(returned_data);
     }
+    free(returned_data);
     return 1;   
 }
