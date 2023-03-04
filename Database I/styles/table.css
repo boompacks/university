@@ -1,0 +1,97 @@
+.logo{
+    text-align: center;
+}
+
+
+.unime2{
+	width: 128px;
+	height: auto;
+}
+
+
+table {
+    background: #fafafa;
+    margin: 12px auto;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(32, 32, 32, .3);
+    
+}
+
+th, td{
+    padding: 10px 15px;
+}
+
+th{
+    background: #0039a6;
+    color: #fafafa;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even){
+    background: #eeeeee;
+}
+
+.actions{
+    display: flex;
+    flex-flow: row;
+}
+
+form button{
+    outline: none;
+    border: none;
+    background: none;
+}
+
+
+.edit, .delete{
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px;
+    color: white;
+    background-color: white;
+}
+
+.edit {
+    background-color: #00711e;
+}
+.edit:hover{
+    background-color: #004412;
+}
+
+.delete{
+    background-color: red;
+}
+.delete:hover{
+    background-color: rgb(118, 0, 0);
+}
+
+td a:hover:after{
+    width: 0%;
+}
+
+.extraButtons{
+    display: flex;
+    justify-content: center;
+    margin: 12px;
+    padding: 0px 24px;
+    gap: 24px;
+}
+
+.search{
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px;
+    color: white;
+    background-color: black;
+}
+
+
+

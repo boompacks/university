@@ -1,0 +1,188 @@
+*{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+a{
+    position: relative;
+    text-decoration: none;
+    color: white;
+}
+
+a:after{
+    content: "";
+    position: absolute;
+    background-color: white;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -6px;
+    transition: 0.3s;
+}
+
+a:hover:after{
+    width: 100%;
+}
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    margin:0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Header */
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin:0;
+    padding: 0px 24px;
+    background-color: #0039a6;
+}
+
+.header ul{
+    list-style: none;
+}
+
+.right-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+}
+
+.header-logo{
+    max-width: 256px;
+}
+
+.secondary-text{
+    font-size: 20px;
+    color: #E5E7EB;
+}
+
+h1{
+    color: #E5E7EB;
+}
+
+/* Content */
+
+.content{
+    flex: 1 0 auto;
+}
+
+.banner{
+    height: 750px;
+    width: 100%;
+    background-image: url("../images/dorm.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.welcome{
+    width: 60%;
+    height: auto;
+    display: flex;
+    flex-flow: row;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 5px 10px 20px black;
+}
+
+
+.welcomehouse{
+    max-width: 100%;
+    height: auto;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+#welcomeText{
+    margin-top: -100px;
+}
+
+.text{
+    text-align: left;
+}
+
+
+.section{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+h2{
+    font-size: 42px;
+    text-align: center;
+}
+
+
+.textColumn{
+    width: 40%;
+    margin: 24px;
+    font-size: 20px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+
+.choices a{
+    color: black;
+}
+
+.choices li{
+    margin: 24px;
+}
+
+
+.choices a::after{
+    background-color: black;
+}
+
+.imageColumn{
+    width: 60%;
+}
+
+
+.students, .renter{
+    clip-path: polygon(100% 0%, 100% 50%, 100% 100%, 0 100%, 0% 50%, 25% 0%);
+    width: 100%;
+    height: auto;
+}
+
+
+.referent, .house{
+    clip-path: polygon(72% 0, 100% 39%, 100% 100%, 47% 100%, 0 100%, 0 0);
+    width: 100%;
+    height: auto;
+}
+
+.error{
+    padding: 36px;
+    font-size: 40px;
+}
+.error a{
+    color:  #0039a6;
+}
+.error a::after{
+    background-color:  #0039a6;
+}
+
+/* Footer */
+
+.footer{
+    background-color: #0039a6;
+    display: flex;
+    height: 72px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex-shrink: 0;
+}
