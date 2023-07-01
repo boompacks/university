@@ -1,0 +1,57 @@
+version: "3"
+volumes:
+  nextcloud:
+  db:
+
+services:
+  container-name: nextcloud
+  nextcloud:
+    image: nextcloud
+    container_name: nextcloud
+    restart: unless-stopped
+    volumes:
+      - nextcloud:/var/www/html
+    environment:
+      - MYSQL_PASSWORD=pippo
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+    depends_on:
+      - nextcloud-db
+
+  nextcloud-db:
+    image: hypriot/rpi-mysql
+    container_name: database
+    restart: unless-stopped
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=pippo
+      - MYSQL_PASSWORD=pippo
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+
+  proxy:
+    image: nginx
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./certs:/etc/nginx/ssl/certs
+    depends_on:
+      - nextcloud
+  
+  backup:
+    image: alpine
+    container_name: scheduled_backup
+    restart: unless-stopped
+    volumes:
+      - nextcloud:/nextcloud
+      - ./backup:/backup
+      - ./backup.sh:/backup.sh
+    command: sh -c "apk update && apk add --no-cache rsync && sh ./backup.sh"
+    depends_on:
+      - nextcloud
